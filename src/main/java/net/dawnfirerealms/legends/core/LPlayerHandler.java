@@ -27,7 +27,7 @@ public class LPlayerHandler {
 
   private HashMap<String, LPlayer> data = new HashMap<String, LPlayer>();
 
-	public LegendsPlayer getPlayer(Player player){
+	public LPlayer getPlayer(Player player){
 		return data.get(player.getName());
 	}
 	
