@@ -14,36 +14,31 @@ This file is part of Legends.
     You should have received a copy of the GNU General Public License
     along with Legends.  If not, see <http://www.gnu.org/licenses/>.
 */
+package net.dawnfirerealms.legends.builder;
 
-package net.dawnfirerealms.legends.library.weapon;
+import net.dawnfirerealms.legends.library.race.Race;
+import org.bukkit.configuration.file.YamlConfiguration;
 
-import net.dawnfirerealms.legends.library.restriction.Restrictable;
+import java.util.HashMap;
 
 /**
  * @author B2OJustin
  */
-public class Weapon implements Restrictable {
-    private String name;
-    private String[] description;
-
-    public Weapon() {
+public class ConfigBuilder {
+    static {
+        // Default builders
+        registerBuilder(Race.class, new RaceBuilder());
     }
 
-    public Weapon setName(String name) {
-        this.name = name;
-        return this;
+    private static HashMap<Class, BasicBuilder> builderMap = new HashMap<>();
+
+    public static <T> void registerBuilder(Class<T> clazz, BasicBuilder<T> builder) {
+        builderMap.put(clazz, builder);
     }
 
-    public Weapon setDescription(String[] description) {
-        this.description = description;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String[] getDescription() {
-        return description;
+    @SuppressWarnings("unchecked")
+    public static <T> T load(YamlConfiguration config, Class<T> clazz) {
+        BasicBuilder<T> builder = builderMap.get(clazz);
+        return builder.load(config);
     }
 }
