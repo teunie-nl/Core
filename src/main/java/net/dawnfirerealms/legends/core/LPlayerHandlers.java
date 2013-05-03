@@ -6,13 +6,13 @@ import org.bukkit.entity.Player;
 
 public class LPlayerHandlers {
 
-  private HashMap<String, LegendsPlayer> data = new HashMap<String, LegendsPlayer>();
+  private HashMap<String, LPlayer> data = new HashMap<String, LPlayer>();
 
 	public LegendsPlayer getPlayer(Player player){
 		return data.get(player.getName());
 	}
 	
-	public void setPlayer(Player player, LegendsPlayer lPlayer){
+	public void setPlayer(Player player, LPlayer lPlayer){
 		data.put(player.getName(), lPlayer);
 	}
 	
