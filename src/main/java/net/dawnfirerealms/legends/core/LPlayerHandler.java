@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import org.bukkit.entity.Player;
 
-public class LPlayerHandlers {
+public class LPlayerHandler {
 
   private HashMap<String, LPlayer> data = new HashMap<String, LPlayer>();
 
