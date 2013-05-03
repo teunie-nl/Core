@@ -28,11 +28,14 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 
-public class LegendsPlayer implements SkillUser, WeaponUser, ArmorUser {
+/**
+ * @author B2OJustin
+ */
+public class LPlayer implements SkillUser, WeaponUser, ArmorUser {
     private Race race;
     private Player player;
 
-    public LegendsPlayer(Player player) {
+    public LPlayer(Player player) {
         this.player = player;
     }
 
