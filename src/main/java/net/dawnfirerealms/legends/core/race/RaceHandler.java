@@ -17,9 +17,11 @@ This file is part of Legends.
 
 package net.dawnfirerealms.legends.core.race;
 
+import net.dawnfirerealms.legends.builder.ConfigBuilder;
 import net.dawnfirerealms.legends.core.LegendsPlugin;
 import net.dawnfirerealms.legends.core.utils.ConfigHandler;
 import net.dawnfirerealms.legends.library.race.Race;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.util.HashMap;
@@ -41,7 +43,8 @@ public class RaceHandler {
 
         File folder = new File(CONFIG_PATH);
         for(File file : folder.listFiles()) {
-            Race race = (Race) configHandler.loadInstance(CONFIG_PATH + file.getName());
+            YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
+            Race race = ConfigBuilder.load(config, Race.class);
             addRace(race);
         }
     }

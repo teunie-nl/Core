@@ -14,36 +14,13 @@ This file is part of Legends.
     You should have received a copy of the GNU General Public License
     along with Legends.  If not, see <http://www.gnu.org/licenses/>.
 */
+package net.dawnfirerealms.legends.builder;
 
-package net.dawnfirerealms.legends.library.weapon;
-
-import net.dawnfirerealms.legends.library.restriction.Restrictable;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
  * @author B2OJustin
  */
-public class Weapon implements Restrictable {
-    private String name;
-    private String[] description;
-
-    public Weapon() {
-    }
-
-    public Weapon setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public Weapon setDescription(String[] description) {
-        this.description = description;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String[] getDescription() {
-        return description;
-    }
+interface BasicBuilder<T> {
+    public T load(YamlConfiguration config);
 }
